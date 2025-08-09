@@ -1,0 +1,13 @@
+# Віртуальне середовище
+.venv/
+venv/
+
+# Python кеші
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Інше сміття
+.DS_Store
+*.log
+

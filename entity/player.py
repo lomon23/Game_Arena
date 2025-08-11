@@ -8,7 +8,7 @@ class Player(FirstPersonController):
         self.position = position
         #self.model = "cube",
         #self.color = color.red, 
-        self.speed = 5
+        self.speed = 10
         
         
 

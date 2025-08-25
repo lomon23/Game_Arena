@@ -1,7 +1,7 @@
 from ursina import *
 
 class Room(Entity):
-    def __init__(self, scale=10, height=5):
+    def __init__(self, scale=40, height=5):
         super().__init__()
 
         thickness = 0.2  
@@ -10,8 +10,8 @@ class Room(Entity):
             parent=self,
             model="plane",
             scale=(scale, 1, scale),
-            texture="white_cube",
-            texture_scale=(scale, scale),
+            texture="sprite/room_sprite/floor.png",
+            texture_scale=(4, 1),
             collider="box",
             position=(0, 0, 0)
         )
@@ -30,8 +30,8 @@ class Room(Entity):
                 parent=self,
                 model="cube",
                 scale=(scale, height, thickness),
-                texture="brick",
-                texture_scale=(scale, height),
+                texture="sprite/room_sprite/wall.png",
+                texture_scale=(6, 1),
                 collider="box",
                 position=pos,
                 rotation=rot

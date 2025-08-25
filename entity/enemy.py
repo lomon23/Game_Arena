@@ -4,10 +4,32 @@ import random, math
 from entity.entities import EnemyEntity
 
 class Enemy2D(Entity):
-    def __init__(self, player, position=(0,10,0), speed=2, patrol_bounds=None):
-        super().__init__(model='quad', texture='white_cube', position=position,
-                         scale=(1,3,0), billboard=False, double_sided=True, collider='box')
+    def __init__(self, player, position=(0,1,0), speed=2, patrol_bounds=None):
+        super().__init__(model='quad',
+                         #texture='sprite/enemy_sprite/Sprite-0002.png',
+                         origin_y =- 0.5,
+                         position=position,
+                         scale=(2,3,0),
+                         billboard=False,
+                         double_sided=True,
+                         collider='box'
+        )
+            
+        self.anim = SpriteSheetAnimation(
+            'sprite/enemy_sprite/enemy_animation.png',
+            rows=1,
+            cols=8,
+            fps=6,
+            animations={
+                'walk': ((0,0), (0,7))   # від кадру 0 до кадру 7
+            },
+            parent=self,
+            scale=(2,3,0),
+            position=(0,0,0),
+            loop=True
+        )
 
+        self.anim.play('walk')
         self.stats = EnemyEntity()  
         self.player = player
         self.speed = speed

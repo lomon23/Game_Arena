@@ -2,34 +2,35 @@
 from ursina import *
 import random, math
 from entity.entities import EnemyEntity
+from system.animation import SpriteSheetAnimation
+
+
+
+
 
 class Enemy2D(Entity):
     def __init__(self, player, position=(0,1,0), speed=2, patrol_bounds=None):
-        super().__init__(model='quad',
-                         #texture='sprite/enemy_sprite/Sprite-0002.png',
-                         origin_y =- 0.5,
-                         position=position,
-                         scale=(2,3,0),
-                         billboard=False,
-                         double_sided=True,
-                         collider='box'
-        )
-            
-        self.anim = SpriteSheetAnimation(
-            'sprite/enemy_sprite/enemy_animation.png',
-            rows=1,
-            cols=8,
-            fps=6,
-            animations={
-                'walk': ((0,0), (0,7))   # від кадру 0 до кадру 7
-            },
-            parent=self,
+        super().__init__(
+            #model='quad',
+            origin_y=1,
+            position=position,
             scale=(2,3,0),
-            position=(0,0,0),
-            loop=True
+            billboard=False,
+            double_sided=True,
+            collider='box'
         )
 
-        self.anim.play('walk')
+        # анімація як дочірній компонент, підхоплює position, scale і parent
+        self.anim = SpriteSheetAnimation(
+            texture_path='sprite/enemy_sprite/enemy_animation.png',
+            frame_count=8,
+            fps=6,
+            orientation="horizontal",
+            parent=self,         # робимо дочірнім
+            scale=1,              # анімація буде під масштаб батька
+            position = (0, 0.5, 0)
+        )
+
         self.stats = EnemyEntity()  
         self.player = player
         self.speed = speed
@@ -57,6 +58,8 @@ class Enemy2D(Entity):
 
         # UI над головою
         self._create_bars()
+
+
 
     def _create_bars(self):
         self.hp_bar_bg = Entity(parent=self, model='quad', color=color.red,

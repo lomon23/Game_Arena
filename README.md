@@ -13,8 +13,9 @@ Game Arene is a simple arena shooter where the player can test and experience di
 ---
 
 ## Screenshot
-
+# Menu
 ![Main Menu](sprite/menu.png)
+# Game Proces
 ![Game proces](sprite/game_proces.png)
 
 ---

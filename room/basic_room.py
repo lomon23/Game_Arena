@@ -10,7 +10,7 @@ class Room(Entity):
             parent=self,
             model="plane",
             scale=(scale, 1, scale),
-            texture="sprite/room_sprite/floor.png",
+            #texture="sprite/room_sprite/floor.png",
             texture_scale=(4, 1),
             collider="box",
             position=(0, 0, 0)

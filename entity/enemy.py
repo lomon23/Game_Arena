@@ -172,7 +172,7 @@ class Enemy2D(Entity):
             return
 
         # Завдаємо шкоди
-        print(f"Ворог б'є гравця на {self.damage} HP!")
+#        print(f"Ворог б'є гравця на {self.damage} HP!")
 
         # Ставимо кулдаун
         self.attack_cooldown = self.attack_speed    
